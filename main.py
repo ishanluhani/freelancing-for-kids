@@ -1,21 +1,24 @@
 import time, random, pyautogui, pyttsx3, warnings
 from threading import Thread
-from win10toast import ToastNotifier
+from winotify import Notification, audio
 
-n = ToastNotifier()
+n = Notification(title='You received; a order', duration='short', app_id='Ishlancing')
+n.set_audio(audio.Mail, loop=False)
+pyttsx3.init()
 
 
 def get_order():
     while True:
         if not break_:
-            time.sleep(random.randint(1500, 8900))
+            time.sleep(random.randint(1500, 8500))
             if random.randint(1, 10) == 1:
-                n.show_toast('You received VIP a order')
+                n.show()
                 pyttsx3.speak('You received; a VIP; order')
                 orders_vip.append(random.choice(hard_order_list)[4:])
             else:
+                n.show()
                 pyttsx3.speak('You received; a order')
-                orders_vip.append(random.choice(order_list)[4:])
+                orders.append(random.choice(order_list)[+4:])
 
 points = 0
 orders = []
